@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Opportunity } from '../../classes/Opportunity';
 import { RemoteActionsService } from '../../services/remote-actions';
+import {Globals} from '../../globals';
 
 
 @Component({
@@ -14,10 +15,12 @@ export class OtherPageComponent implements OnInit {
 
   dataSource: Array<Opportunity>;
 
-  constructor(private remoteActions : RemoteActionsService) {
+  constructor(private remoteActions : RemoteActionsService,private globals: Globals) {
+    this.globals.title='other Page';
    }
 
    ngOnInit() {
+     
     this.remoteActions.getOpportunities()
     .then(results =>{
       console.log(results);

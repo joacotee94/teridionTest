@@ -1,21 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { RemoteActionsService } from '../../services/remote-actions';
 import { Opportunity } from '../../classes/Opportunity';
-
+import {Globals} from '../../globals';
 @Component({
   selector: 'app-first-page',
   templateUrl: './first-page.component.html',
   styleUrls: ['./first-page.component.css']
 })
-export class FirstPageComponent implements OnInit {
 
+
+export class FirstPageComponent implements OnInit {
+ 
   opportunities: Array<Opportunity>;
 
-  constructor(private remoteActions : RemoteActionsService) {
+  constructor(private remoteActions : RemoteActionsService, private globals: Globals) {
     this.opportunities = new Array<Opportunity>();
+    this.globals.title='';
    }
 
    ngOnInit() {
+   
     this.remoteActions.getOpportunities()
     .then(results =>{
       console.log(results);
