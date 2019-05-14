@@ -1,0 +1,72 @@
+<mat-table #table [dataSource]="dataSource">
+  
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Opportinity Name </mat-header-cell>
+      <mat-cell *matCellDef="let element" data-label="Opp"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="partnerName">
+        <mat-header-cell *matHeaderCellDef> Partner Name </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Partner"> {{element.partnerName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="mrr">
+        <mat-header-cell *matHeaderCellDef> MRR </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="MRR"> {{element.mrr}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="owner">
+        <mat-header-cell *matHeaderCellDef> Owner </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Owner"> {{element.ownerName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="closeDate">
+        <mat-header-cell *matHeaderCellDef> Close Date </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Close date"> {{element.closedDate  | date:'MM-dd-yyyy' }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="useCase">
+        <mat-header-cell *matHeaderCellDef> Use Case </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Use Case"> {{element.useCase}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nextStep">
+        <mat-header-cell *matHeaderCellDef> Next Step </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Next step"> {{element.nextStep}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="stageName">
+        <mat-header-cell *matHeaderCellDef> Stage </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Stage"> {{element.stageName}} </mat-cell>
+      </ng-container>
+
+    <ng-container matColumnDef="account">
+      <mat-header-cell *matHeaderCellDef> Account </mat-header-cell>
+      <mat-cell *matCellDef="let element" data-label="Account"> {{element.accName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+      <mat-cell *matCellDef="let element" data-label="Edit">  <a mat-raised-button color="primary"
+        [mdePopoverTriggerFor]="appPopover"
+        mdePopoverTriggerOn="click">
+        Edit
+      </a>
+      <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
+        <mat-card style="max-width: 300px">
+          <mat-card-content>
+         {{element.description}}
+          </mat-card-content>
+        </mat-card>
+      </mde-popover>
+    </mat-cell>
+
+    </ng-container>
+
+
+
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>

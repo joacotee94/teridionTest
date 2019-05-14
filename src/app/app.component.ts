@@ -1,6 +1,7 @@
 import { SalesforceApiService } from './sf-api-service';
 import { Component, OnInit } from '@angular/core';
 import {Globals} from './globals';
+import { RemoteActionsService } from './services/remote-actions';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,13 +9,14 @@ import {Globals} from './globals';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private _sfApi: SalesforceApiService, private globals: Globals) {
+  constructor(private _sfApi: SalesforceApiService, private globals: Globals, public remoteAction: RemoteActionsService) {
 
   }
 
   title = 'app';
 
   ngOnInit() {
+
     this._sfApi.helloAngular("Joacote")
     .subscribe((name) => {
       this.title = name;

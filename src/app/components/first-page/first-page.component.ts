@@ -20,19 +20,19 @@ export class FirstPageComponent implements OnInit {
 
    ngOnInit() {
    
-    this.remoteActions.getOpportunities()
+    /*this.remoteActions.getOpportunities()
     .then(results =>{
       console.log(results);
       this.mapObject(results);
     })
-    .catch(error => console.log(error));
+    .catch(error => console.log(error));*/
   }
 
   private mapObject(arr) {
     debugger;
     for (let i = 0; i < arr.length; i++) {
       let obj = arr[i];
-      let o = new Opportunity(obj.Name, obj.Account.Name, obj.StageName);
+      let o = new Opportunity(obj);
       this.opportunities.push(o);
     }
   }

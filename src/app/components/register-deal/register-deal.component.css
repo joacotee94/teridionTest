@@ -1,0 +1,24 @@
+.example-container {
+    display: flex;
+    padding-top: 30px;
+    flex-direction: column;
+    width: 80%;
+    text-align:"center center";
+    margin-left:10%;
+    margin-left: 10%; 
+    margin-bottom: 30px;
+  }
+  
+  .example-container > * {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 15px;
+
+  }
+
+  .example-button-row {
+    display: flex;
+    align-items:flex-end;
+    justify-content: space-around;
+  }

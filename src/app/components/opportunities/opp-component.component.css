@@ -9,3 +9,13 @@
   overflow: auto;
   max-height: 500px;
 }
+
+.select {
+  width:120px;
+  margin: 15px;
+}
+.filter-container {
+  width: 100%;
+  align-content: center;
+  padding: 30px;
+}
