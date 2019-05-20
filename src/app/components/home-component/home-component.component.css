@@ -1,0 +1,15 @@
+.oppList {
+    float: left;
+    overflow-y: scroll;
+    height: 80%;
+    padding:30px;
+    margin-bottom: 40px;
+}
+.graph {
+    padding:30px;
+    float: right;
+    height: 80%;
+    
+    
+
+}

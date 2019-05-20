@@ -65,4 +65,22 @@ export class RemoteActionsService {
       }) 
     }
 
+    getSalesData() {
+      return new Promise((resolve,reject)=>{
+        this.callRemote('CommunityFachadeController.getSalesGraphData',[],resolve,reject)
+      })
+    }
+
+    getDocuments() {
+      return new Promise((resolve,reject)=> {
+        this.callRemote('CommunityFachadeController.getPartnerDocs',[],resolve,reject)
+      })
+    }
+
+    uploadDocument(docName,attachmentBody,attName,attDesctiption,docType) {
+      return new Promise((resolve,reject)=> { 
+        this.callRemote('CommunityFachadeController.uploadFile',[docName,attachmentBody,attName,attDesctiption,docType],resolve,reject)
+      })
+    }
+
 }

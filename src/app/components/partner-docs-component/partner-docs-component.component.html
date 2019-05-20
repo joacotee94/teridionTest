@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div style="text-align:center" class="">
+      <a>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consequat commodo luctus. Suspendisse eu sapien nulla. Integer iaculis tortor vitae risus lacinia, quis bibendum sapien dapibus. Fusce a eros semper, semper metus sed, fermentum purus. Nunc faucibus sem vitae dolor porttitor, vitae iaculis arcu sagittis. Phasellus tincidunt, ante sed convallis consectetur, sapien felis congue diam, eget efficitur libero purus at nisi. Maecenas ac elementum urna.
+      </a>
+    </div>
+    <div class="container-fluid cards-display" >
+      <div style="text-align:center">
+        <div class="upload-button">
+          <mat-icon>cloud_upload</mat-icon>
+          <label for="file">Upload File</label>
+          <input type="file" id="file" (change)="handleFileInput($event.target.files)">
+        </div> 
+      </div>
+      <div class="card-container" *ngFor="let doc of bussines">
+          <mat-card class="example-card" >
+            <mat-card-header class='card-header'>
+              <mat-card-title>{{doc.documentName}}</mat-card-title>
+              <mat-icon class="download-icon">cloud_download</mat-icon>
+            </mat-card-header>
+            <mat-card-content class="card-content">
+              <p>
+                  {{doc.description}}
+              </p>
+            </mat-card-content>
+          </mat-card>
+      </div>
+
+      <div class="container-fluid">
+        <div class="card-container" *ngFor="let doc of comercial">
+            <mat-card class="example-card" >
+              <mat-card-header class='card-header'>
+                <mat-card-title>{{doc.documentName}}</mat-card-title>
+                <mat-icon class="download-icon">cloud_download</mat-icon>
+              </mat-card-header>
+              <mat-card-content class="card-content" >
+                <p>
+                    {{doc.description}}
+                </p>
+              </mat-card-content>
+            </mat-card>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,3 +1,12 @@
+<div class="container-fluid">
+    <div style="text-align:center">
+      <h1>
+        Opportunities
+      </h1>
+    </div>
+    <div class="container">
+  </div>
+
 <mat-table #table [dataSource]="dataSource">
   
     <ng-container matColumnDef="name">
@@ -44,28 +53,6 @@
       <mat-header-cell *matHeaderCellDef> Account </mat-header-cell>
       <mat-cell *matCellDef="let element" data-label="Account"> {{element.accName}} </mat-cell>
     </ng-container>
-
-    <ng-container matColumnDef="edit">
-      <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
-      <mat-cell *matCellDef="let element" data-label="Edit">  <a mat-raised-button color="primary"
-        [mdePopoverTriggerFor]="appPopover"
-        mdePopoverTriggerOn="click">
-        Edit
-      </a>
-      <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
-        <mat-card style="max-width: 300px">
-          <mat-card-content>
-         {{element.description}}
-          </mat-card-content>
-        </mat-card>
-      </mde-popover>
-    </mat-cell>
-
-    </ng-container>
-
-
-
-
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

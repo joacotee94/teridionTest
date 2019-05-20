@@ -12,9 +12,7 @@ export class AppComponent implements OnInit {
   constructor(private _sfApi: SalesforceApiService, private globals: Globals, public remoteAction: RemoteActionsService) {
 
   }
-
-  title = 'app';
-
+  title:string;
   ngOnInit() {
 
     this._sfApi.helloAngular("Joacote")

@@ -19,7 +19,7 @@ export class OppComponent implements OnInit {
   public useCaseSelected:string;
   public stageSelected:string;
   public account:string;
-  public probability :string;s
+  public probability :string;
   @Input() createdDate : Date;
   @Input() closeDate : Date;
   public admin:boolean;
@@ -35,6 +35,8 @@ export class OppComponent implements OnInit {
    }
 
    ngOnInit() {
+
+    this.probability = null;
     this.ownerSelected='None';
     this.useCaseSelected='None';
     this.stageSelected='None';
@@ -60,9 +62,6 @@ export class OppComponent implements OnInit {
     console.log('Created Date ' + this.createdDate);
     console.log('Created Date ' + event);
 
-    console.log('Close Date ' + this.closeDate);
-    console.log('Close Date ' + this.closeDate);
-
   }
   public getOpporotunities() {
     let userIds = [];
@@ -77,6 +76,9 @@ export class OppComponent implements OnInit {
       createdDateParams= null;
     }else {
       createdDateParams= this.closeDate.toUTCString();
+    }
+    if(this.probability == "") {
+      this.probability = null;
     }
     this.remoteActions.getOpportunities(true,userIds,this.ownerSelected,this.useCaseSelected,this.stageSelected,this.account,createdDateParams,closeDateParams,this.probability)
     .then(results =>{

@@ -1,0 +1,49 @@
+   .example-card {
+        max-width: 300px;
+        margin:30px;
+        padding: 0;
+        border-radius: 7px;
+    }
+    .card-header{
+        padding-top: 12px;
+        padding-left: 12px;
+        padding-right: 12px;
+        max-height: 47px;
+    }
+    .card-content {
+        background-color: gray; 
+        padding:24px;
+        border-radius:0px 0px 7px 7px;
+        color:whitesmoke;
+        max-height: 140px;
+        overflow-y: scroll;
+    }
+    .download-icon {
+        float: right;
+        margin-right: 10px;
+    }
+    .example-header-image {
+        background-size: cover;
+    }
+
+    .card-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        justify-content: center;
+    }
+    .card-header{
+        display: flex;
+        justify-content: space-between;
+    }
+    .upload-button {
+        font-size: 22px;
+        color: #5886a6;
+        float:right;
+        margin-right: 80px; 
+    }
+    .cards-display {
+        margin-top:50px; 
+    }

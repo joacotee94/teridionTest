@@ -25,8 +25,17 @@ import {MatOptionModule,
   MatChipsModule,
   MatDatepickerModule,
   MatNativeDateModule,
+  MatGridListModule,
   MatSnackBarModule } from '@angular/material';
+  
 
+  import * as Ocean from 'fusioncharts/themes/fusioncharts.theme.ocean';
+  import * as Fint from 'fusioncharts/themes/fusioncharts.theme.fint';
+  import * as Candy from 'fusioncharts/themes/fusioncharts.theme.candy';
+  import * as Gammel from 'fusioncharts/themes/fusioncharts.theme.gammel';
+  import * as Zune from 'fusioncharts/themes/fusioncharts.theme.zune';
+  import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
+  import * as Carbon from 'fusioncharts/themes/fusioncharts.theme.carbon';
 
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -35,6 +44,31 @@ import {Globals} from './globals';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { RegisterDealComponent } from './components/register-deal/register-deal.component';
 import { ListOppsComponent } from './components/list-opps/list-opps.component';
+
+import { FusionChartsModule } from 'angular-fusioncharts';
+
+// Import FusionCharts library
+import * as FusionCharts from 'fusioncharts';
+
+// Load FusionCharts Individual Charts
+import * as Charts from 'fusioncharts/fusioncharts.charts';
+import { SalesGraphComponent } from './components/sales-graph/sales-graph.component';
+import { HomeComponentComponent } from './components/home-component/home-component.component';
+import { PartnerDocsComponentComponent } from './components/partner-docs-component/partner-docs-component.component';
+FusionChartsModule.fcRoot(
+  FusionCharts,
+  Charts,
+  Ocean,
+  Fint,
+  Candy,
+  Gammel,
+  Zune,
+  Carbon,
+  FusionTheme
+)
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +78,10 @@ import { ListOppsComponent } from './components/list-opps/list-opps.component';
     ToolbarComponent,
     PersonalDetailsFormComponent,
     RegisterDealComponent,
-    ListOppsComponent
+    ListOppsComponent,
+    SalesGraphComponent,
+    HomeComponentComponent,
+    PartnerDocsComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -53,21 +90,24 @@ import { ListOppsComponent } from './components/list-opps/list-opps.component';
     RouterModule.forRoot([
       { path: 'company-info', component:PersonalDetailsFormComponent},
       { path: 'opps', component: OppComponent},
-      { path: 'home', component: FirstPageComponent},
-      { path: 'register-deal', component: RegisterDealComponent}
+      { path: 'home', component: HomeComponentComponent},
+      { path: 'register-deal', component: RegisterDealComponent},
+      { path: 'partner-docs', component: PartnerDocsComponentComponent},
+      { path: '*', component: HomeComponentComponent}
 
     ]),MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
     MatFormFieldModule,
     MatIconModule,
+    MatGridListModule,
     MatInputModule,
-    MatSelectModule,MatNativeDateModule,        
+    MatSelectModule,MatNativeDateModule,
     MatDatepickerModule,MatSnackBarModule,
     MatOptionModule,MatTabsModule,MatChipsModule,
     MatButtonToggleModule,MatSortModule,MatTableModule,
     MatMenuModule,MatToolbarModule,MatSidenavModule,FormsModule,ReactiveFormsModule,
-   NgbModule
+   NgbModule,FusionChartsModule
     
   ],
   providers: [
