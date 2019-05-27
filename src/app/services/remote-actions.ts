@@ -40,7 +40,7 @@ export class RemoteActionsService {
     }
     getAllUsers() {
       return new Promise((resolve,reject)=> {
-        this.callRemote('CommunityFachadeController.getUsers',[],resolve,reject)
+        this.callRemote('CommunityFachadeController.getUser',[],resolve,reject)
       })
     }
     getUseCases() {
@@ -64,7 +64,11 @@ export class RemoteActionsService {
         this.callRemote('CommunityFachadeController.registerNewDeal',[accountName,oppName,selectedUseCase,closeDate,mrr,contactFirstName, contactLastName,contactTitle,contactEmail,  contactPhone,contactDetails],resolve,reject)
       }) 
     }
-
+    getOppForHomePage() { 
+      return new Promise((resolve,reject)=>{
+        this.callRemote('CommunityFachadeController.getOppsForHomePage',[],resolve,reject)
+      })
+    }
     getSalesData() {
       return new Promise((resolve,reject)=>{
         this.callRemote('CommunityFachadeController.getSalesGraphData',[],resolve,reject)
@@ -77,10 +81,50 @@ export class RemoteActionsService {
       })
     }
 
-    uploadDocument(docName,attachmentBody,attName,attDesctiption,docType) {
+    uploadDocument(docName,attachmentBody,attName,attDesctiption,docType,filetype) {
       return new Promise((resolve,reject)=> { 
-        this.callRemote('CommunityFachadeController.uploadFile',[docName,attachmentBody,attName,attDesctiption,docType],resolve,reject)
+        this.callRemote('CommunityFachadeController.uploadFile',[docName,attachmentBody,attName,attDesctiption,docType,filetype],resolve,reject)
+      })
+    }
+    getUserName() {
+      return new Promise((resolve,reject)=>{
+        this.callRemote('CommunityFachadeController.getUserName',[],resolve,reject)
+      })
+    }
+    getUserInfo(){
+      return new Promise((resolve,reject)=> {
+        this.callRemote('CommunityFachadeController.getUserInfo',[],resolve,reject)
+      })
+    }
+    getPartnerInfo(){
+      return new Promise((resolve,reject)=> {
+        this.callRemote('CommunityFachadeController.getPartner',[],resolve,reject)
       })
     }
 
+    saveUserInfo(user,recordType) {
+      return new Promise((resolve,reject)=> {
+        this.callRemote('CommunityFachadeController.saveUserInfo',[user,recordType],resolve,reject)
+      })
+    }
+    savePartenerInfo(partner) {
+      return new Promise((resolve,reject)=>{
+        this.callRemote('CommunityFachadeController.savePartner',[partner],resolve,reject)
+      })
+    }
+    getUserTypes(){ 
+      return new Promise((resolve,reject)=> {
+        this.callRemote('CommunityFachadeController.getUserTypes',[],resolve,reject)
+      })
+    }
+    getCurrentUserType() {
+      return new Promise((resolve,reject)=> {
+        this.callRemote('CommunityFachadeController.getCurrentUserType',[],resolve,reject)
+      })
+    }
+    updateOppNote(id,val) {
+      return new Promise((resolve,reject)=>{
+        this.callRemote('CommunityFachadeController.updateNote',[id,val],resolve,reject)
+      })
+    }
 }

@@ -17,15 +17,17 @@ export class OppComponent implements OnInit {
   displayedColumns = ['name','partnerName','mrr','owner','closeDate','useCase','nextStep','account','stageName','edit'];
   public ownerSelected:string;
   public useCaseSelected:string;
+  public selectedUseCases: Array<string>;
   public stageSelected:string;
   public account:string;
   public probability :string;
+  checked = false;
   @Input() createdDate : Date;
   @Input() closeDate : Date;
   public admin:boolean;
-
+  checklist= {'All' : false };
   dataSource: Array<Opportunity>;
-  allOwners:Array<User>;
+  allOwners:Array<SelectOption>;
   allUseCases:Array<SelectOption>;
   allStages:Array<SelectOption>
   displaySource: Array<Opportunity>;
@@ -35,7 +37,7 @@ export class OppComponent implements OnInit {
    }
 
    ngOnInit() {
-
+    this.selectedUseCases = [];
     this.probability = null;
     this.ownerSelected='None';
     this.useCaseSelected='None';
@@ -46,7 +48,7 @@ export class OppComponent implements OnInit {
     this.remoteActions.isAdmin()
     .then(result => {
       this.globals.isAdmin = result as boolean;
-      this.remoteActions.getOpportunities(true,[],'None','None','None','',null,null,null)
+      this.remoteActions.getOpportunities(true,[],'None',['None'],'None','',null,null,null)
       .then(results => {
         console.log(results);
         this.mapObject(results);
@@ -54,14 +56,27 @@ export class OppComponent implements OnInit {
 
     }).catch(err => {console.log(err)});
 
-    this.remoteActions.getUseCases().then(res => this.allUseCases= res as Array<SelectOption>).catch(err=>console.log(err)); 
+    this.remoteActions.getUseCases()
+    .then(res => {
+      this.allUseCases= res as Array<SelectOption>;
+      this.checklist['All']
+      this.allUseCases.forEach(element => {
+        this.checklist[element.value]=false;
+      });
+    }).catch(err=>console.log(err)); 
 
-    this.remoteActions.getStage().then(res => this.allStages= res as Array<SelectOption>).catch(err=>console.log(err)); 
+    this.remoteActions.getStage().then(res => this.allStages= res as Array<SelectOption>).catch(err=>console.log(err));
+
+    this.remoteActions.getAllUsers()
+    .then(res => {
+      this.allOwners = res as Array<SelectOption>
+    }).catch(err=>
+      console.log(err)
+    );
   }
-  selectedChanged(event){
-    console.log('Created Date ' + this.createdDate);
-    console.log('Created Date ' + event);
-
+  selectedChanged(event,dateParam){
+    this[dateParam] = event;
+    this.getOpporotunities();
   }
   public getOpporotunities() {
     let userIds = [];
@@ -80,23 +95,28 @@ export class OppComponent implements OnInit {
     if(this.probability == "") {
       this.probability = null;
     }
-    this.remoteActions.getOpportunities(true,userIds,this.ownerSelected,this.useCaseSelected,this.stageSelected,this.account,createdDateParams,closeDateParams,this.probability)
+    this.remoteActions.getOpportunities(true,userIds,this.ownerSelected,this.selectedUseCases,this.stageSelected,this.account,createdDateParams,closeDateParams,this.probability)
     .then(results =>{
       console.log(results);
       this.mapObject(results);
     })
     .catch(error => {console.log(error)});
-
   }
 
-  private mapUser(arr) {
-    this.allOwners = new Array<User>();
-    for(let i = 0; i < arr.length; i++) {
-      let obj = arr[i];
-      let u = new User(obj);
-      this.allOwners.push(u);
+  public toggledCheckbox(value) {
+    value = value =='All'? 'None': value;
+    let index = this.selectedUseCases.indexOf(value)
+    if(index>=0 && !this.checklist[value]) {
+
+        this.selectedUseCases.splice(index,1);
+    }else if(this.checklist[value]){
+
+      this.selectedUseCases.push(value);
     }
+    this.getOpporotunities();
+
   }
+
   private mapObject(arr) {
     this.dataSource = new Array<Opportunity>();
 
@@ -106,6 +126,11 @@ export class OppComponent implements OnInit {
       this.dataSource.push(o);
     }
     this.displaySource= this.dataSource;
+  }
+  updateNote(id,event) {
+    console.log(id);
+    console.log(event.target.value);
+    this.remoteActions.updateOppNote(id,event.target.value);
   }
   private formatDate(vDate){
     var format = 'AM';

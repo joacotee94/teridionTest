@@ -1,0 +1,43 @@
+<form class="example-container  mat-elevation-z8" [formGroup]="partner" (ngSubmit)="updatePartner()"> 
+    <div class="container-fluid">
+        <div style="text-align:center">
+          <h1>
+            COMPANY INFO
+          </h1>
+        </div>
+    </div>
+    <mat-form-field>
+      <input matInput placeholder="Company Name" formControlName="Name"> 
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Website" formControlName="Website">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Address" formControlName="BillingPostalCode">
+    </mat-form-field>
+    <mat-form-field>  
+      <input matInput placeholder="Number of Locations" formControlName="numberOflocations__c">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Territories Covered" formControlName="teritories__c">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Total Revenue" formControlName="totalRevenue__c">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Networking Revenue" formControlName="networkingRevenue__c">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Overall Headcount" formControlName="overAllHeadCount__c">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Sales Headcount" formControlName="totalHeadCount__c">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="How Did You Hear About Teridion" formControlName="hearAboutTeridion__c">
+    </mat-form-field>
+    <div class="button-row">
+        <button type="submit" mat-raised-button color="primary" (click)="updatePartner()" [disabled]="!partner.valid">Save</button>
+        <button mat-raised-button>Cancel</button>
+    </div>
+  </form>

@@ -3,22 +3,21 @@
     <mat-form-field class='select' *ngIf="globals.isAdmin">
         <mat-label>OWNER</mat-label>
         <mat-select [(value)]="ownerSelected" (selectionChange)="getOpporotunities()">
-          <mat-option value="none">
-            None
-          </mat-option>
-          <mat-option *ngFor="let user of allOwners" [value]="user.name">
+          <mat-option *ngFor="let user of allOwners" [value]="user.value">
             {{user.name}}
           </mat-option>
       </mat-select> 
     </mat-form-field>
-    <mat-form-field class='select'>
-        <mat-label>USE CASE</mat-label>
-      <mat-select [(value)]="useCaseSelected" (selectionChange)="getOpporotunities()">
-        <mat-option *ngFor="let useCase of allUseCases" [value]="useCase.label">
-          {{useCase.value}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>    
+    <div class='select'>
+      <button mat-button [matMenuTriggerFor]="menu">USE CASE <mat-icon >arrow_drop_down</mat-icon></button>
+        <mat-menu #menu="matMenu">
+          <div (click) = "$event.stopPropagation()">
+            <mat-checkbox class="select" *ngFor="let useCase of allUseCases" [(ngModel)]="checklist[useCase.value]" labelPosition="after" (change)="toggledCheckbox(useCase.value)" >
+              {{useCase.value}}
+            </mat-checkbox>
+          </div>
+        </mat-menu>
+      </div>    
     <mat-form-field class='select'>
         <mat-label>STAGE</mat-label>
       <mat-select [(value)]="stageSelected" (selectionChange)="getOpporotunities()">
@@ -31,17 +30,17 @@
       <input matInput placeholder="Account"  [value]="account" (input)="account = $event.target.value; getOpporotunities() ">
     </mat-form-field>
     <mat-form-field class='select'>
-      <input matInput [matDatepicker]="createdDatePicker" placeholder="Created Date" [(ngModel)]='createdDate' (input)="createdDate = $event.target.value; getOpporotunities() ">
+      <input matInput [matDatepicker]="createdDatePicker" placeholder="Created Date" [(ngModel)]='createdDate' (input)="createdDate = $event.target.value; ">
       <mat-datepicker-toggle matSuffix [for]="createdDatePicker"></mat-datepicker-toggle>
-      <mat-datepicker #createdDatePicker (selectedChanged)="selectedChanged($event)"></mat-datepicker>
+      <mat-datepicker #createdDatePicker (selectedChanged)="selectedChanged($event,'createdDate')"></mat-datepicker>
     </mat-form-field>
     <mat-form-field class='select'>
-      <input matInput [matDatepicker]="closedDatePicker" placeholder="Closed date" [(ngModel)]='closeDate' (input)="closeDate = $event.target.value; getOpporotunities() ">
+      <input matInput [matDatepicker]="closedDatePicker" placeholder="Closed date" [(ngModel)]='closeDate' (input)="closeDate = $event.target.value;  ">
       <mat-datepicker-toggle matSuffix [for]="closedDatePicker"></mat-datepicker-toggle>
-      <mat-datepicker #closedDatePicker (selectedChanged)="selectedChanged($event)"></mat-datepicker>
+      <mat-datepicker #closedDatePicker (selectedChanged)="selectedChanged($event,'closeDate')"></mat-datepicker>
     </mat-form-field>
     <mat-form-field class='select'>
-      <mat-label>Probabolity</mat-label>
+      <mat-label>Probability</mat-label>
         <input matInput placeholder="Probability"  [value]="probability" (input)="probability = $event.target.value; getOpporotunities() ">
   </mat-form-field>
   </div>
@@ -98,20 +97,17 @@
     </ng-container>
 
     <ng-container matColumnDef="edit">
-      <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
-      <mat-cell *matCellDef="let element" data-label="Edit">  <a mat-raised-button color="primary"
-        [mdePopoverTriggerFor]="appPopover"
-        mdePopoverTriggerOn="click">
-        Edit
-      </a>
-      <mde-popover #appPopover="mdePopover" [mdePopoverOverlapTrigger]="false">
-        <mat-card style="max-width: 300px">
-          <mat-card-content>
-         {{element.description}}
-          </mat-card-content>
-        </mat-card>
-      </mde-popover>
-    </mat-cell>
+      <mat-header-cell *matHeaderCellDef> Edit Note </mat-header-cell>
+      <mat-cell *matCellDef="let element" data-label="Edit Note">
+          <button mat-button [matMenuTriggerFor]="menu"><mat-icon >edit</mat-icon></button>
+          <mat-menu #menu="matMenu" style="width: 100px">
+            <div (click) = "$event.stopPropagation()">
+              <mat-form-field class="example-full-width">
+                <textarea matInput placeholder="Enter note" (blur)="updateNote(element.id,$event)">{{element.note}}</textarea>
+              </mat-form-field>
+            </div>   
+          </mat-menu>
+      </mat-cell> 
 
     </ng-container>
 
@@ -119,7 +115,8 @@
 
 
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns;"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
+
 </div>

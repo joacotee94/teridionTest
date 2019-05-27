@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" style="background: white;">
     <div style="text-align:center">
       <h1>
         Opportunities
@@ -57,3 +57,5 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  

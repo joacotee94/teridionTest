@@ -1,43 +1,49 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light toolbar">
     <a class="navbar-brand" href="#"><img  [src]="'assets/Teridion.PNG' | staticpath"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample" (click)="isCollapsed = !isCollapsed">
       <span class="navbar-toggler-icon"></span>
     </button>
   
     <div class="collapse navbar-collapse"  id="collapseExample" [ngbCollapse]="isCollapsed">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['home']">HOME</a>
+      <ul class="navbar-nav mr-auto menu">
+        <li class="nav-item ">
+          <a class="nav-link option" [routerLink]="['home']">HOME</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" [routerLink]="['opps']">OPPORTUNITIES</a>
+          <a class="nav-link option" [routerLink]="['opps']">OPPORTUNITIES</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link"  [routerLink]="['register-deal']">REGISTER DEAL</a>
+          <a class="nav-link option"  [routerLink]="['register-deal']">REGISTER DEAL</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" >RESOURCES</a>
+          <a class="nav-link option" >RESOURCES</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" [routerLink]="['partner-docs']" >DOCUMENTS</a>
+          <a class="nav-link option" [routerLink]="['partner-docs']" >DOCUMENTS</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" >SHCEDULE DEMO</a>
+          <a class="nav-link option" >SHCEDULE DEMO</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" [routerLink]="['company-info']">COMPANY</a>
+          <a class="nav-link option" [routerLink]="['company-info']">COMPANY</a>
         </li>
   
       </ul>
     </div>
-    <div class="form-inline my-2 my-lg-0">
+    <div class="form-inline my-2 my-lg-0 account">
       <button mat-button>LOG OUT</button>
       <mat-icon>account_circle</mat-icon>
       <button mat-button>ACCOUNT</button>
       <mat-chip *ngIf="globals.isAdmin">Admin</mat-chip>
       <mat-chip *ngIf="!globals.isAdmin">Guest</mat-chip>
     </div>
+
+    <mat-toolbar-row>
+        <div class="form-inline my-2 my-lg-0">
+            User: {{userName}}
+          </div>
+    </mat-toolbar-row>
   </nav>
 
 

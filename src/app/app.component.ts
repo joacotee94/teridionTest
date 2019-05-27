@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   }
   title:string;
   ngOnInit() {
-
+    this.remoteAction.isAdmin().then((res)=>this.globals.isAdmin= res as boolean).catch((err)=>console.log(err));
     this._sfApi.helloAngular("Joacote")
     .subscribe((name) => {
       this.title = name;

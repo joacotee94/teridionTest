@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter,Output } from '@angular/core';
 import {Globals} from '../../globals';
+import {RemoteActionsService} from  '../../services/remote-actions';
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
@@ -7,9 +8,16 @@ import {Globals} from '../../globals';
 })
 export class ToolbarComponent  {
   public isCollapsed = true;
+  userName:string;
   @Output() public sidenavToggle = new EventEmitter();
  
-  constructor(public globals:Globals) { }
+  constructor(public globals:Globals, private remoteActions:RemoteActionsService) { 
+    this.remoteActions.getUserName()
+    .then((res)=>{
+      this.userName= res as string;
+    }).catch((err)=>console.log(err));
+
+  }
  
   ngOnInit() {
   }

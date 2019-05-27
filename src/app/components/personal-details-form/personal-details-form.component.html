@@ -1,15 +1,36 @@
-<div class="example-container">
-    <mat-form-field>
-      <input matInput placeholder="Input">
-    </mat-form-field>
-  
-    <mat-form-field>
-      <textarea matInput placeholder="Textarea"></textarea>
-    </mat-form-field>
-  
-    <mat-form-field>
-      <mat-select placeholder="Select">
-        <mat-option value="option">Option</mat-option>
-      </mat-select>
-    </mat-form-field>
+<form class="example-container  mat-elevation-z8" [formGroup]="user" (ngSubmit)="updateUser()"> 
+    <div class="container-fluid">
+        <div style="text-align:center">
+          <h1>
+            Personal Info
+          </h1>
+        </div>
+    </div>
+  <mat-form-field>
+    <input matInput placeholder="First Name" formControlName="FirstName"> 
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Last Name" formControlName="LastName">
+  </mat-form-field>
+  <mat-form-field>
+      <input matInput placeholder="Title" formControlName="Title">
+  </mat-form-field>
+  <mat-form-field>  
+    <input matInput placeholder="Email" formControlName="Email">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Phone" formControlName="Phone">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="User Type" formControlName="Type">
+        <mat-option *ngFor="let useCase of userTypes" [value]="useCase.value">
+          {{useCase.label}}
+        </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="button-row">
+      <button type="submit" mat-raised-button color="primary" (click)="updateUser()" [disabled]="!user.valid">Save</button>
+      <button mat-raised-button>Cancel</button>
   </div>
+</form>

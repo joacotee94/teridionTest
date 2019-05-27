@@ -3,6 +3,7 @@ export class Document {
     public attName: string;
     public description: string;
     public documentName: string;
+    public downloadLink: string;
 
   
   
@@ -11,5 +12,6 @@ export class Document {
       this.attName = obj.attName;
       this.description = obj.description;
       this.documentName = obj.documentName;
+      this.downloadLink = obj.downloadLink;
     }
   }

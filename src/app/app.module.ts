@@ -22,6 +22,7 @@ import {MatOptionModule,
   ,MatInputModule,
   MatSidenavModule,
   MatTabsModule,
+  MatPaginatorModule,
   MatChipsModule,
   MatDatepickerModule,
   MatNativeDateModule,
@@ -55,6 +56,8 @@ import * as Charts from 'fusioncharts/fusioncharts.charts';
 import { SalesGraphComponent } from './components/sales-graph/sales-graph.component';
 import { HomeComponentComponent } from './components/home-component/home-component.component';
 import { PartnerDocsComponentComponent } from './components/partner-docs-component/partner-docs-component.component';
+import { CompanyInfoComponent } from './components/company-info/company-info.component';
+import { CompanySectionComponent } from './components/company-section/company-section.component';
 FusionChartsModule.fcRoot(
   FusionCharts,
   Charts,
@@ -81,14 +84,16 @@ FusionChartsModule.fcRoot(
     ListOppsComponent,
     SalesGraphComponent,
     HomeComponentComponent,
-    PartnerDocsComponentComponent
+    PartnerDocsComponentComponent,
+    CompanyInfoComponent,
+    CompanySectionComponent
   ],
   imports: [
     BrowserModule,
     MdePopoverModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
-      { path: 'company-info', component:PersonalDetailsFormComponent},
+      { path: 'company-info', component:CompanySectionComponent},
       { path: 'opps', component: OppComponent},
       { path: 'home', component: HomeComponentComponent},
       { path: 'register-deal', component: RegisterDealComponent},
@@ -101,7 +106,7 @@ FusionChartsModule.fcRoot(
     MatFormFieldModule,
     MatIconModule,
     MatGridListModule,
-    MatInputModule,
+    MatInputModule,MatPaginatorModule,
     MatSelectModule,MatNativeDateModule,
     MatDatepickerModule,MatSnackBarModule,
     MatOptionModule,MatTabsModule,MatChipsModule,

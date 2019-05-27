@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <app-personal-details-form>
+      </app-personal-details-form>
+    </div>
+    <div class="col" *ngIf="globals.isAdmin"> 
+      <app-company-info>
+      </app-company-info>
+    </div>
+  </div>
+</div>

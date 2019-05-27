@@ -1,7 +1,14 @@
 export class User {
-    public name: string;
-
+    public FirstName: string;
+    public LastName: string;
+    public Email: string;
+    public Phone:string;
+    public Title:string;
     constructor (obj) {
-      this.name = obj.Name;
+      this.FirstName = obj.FirstName;
+      this.LastName = obj.LastName;
+      this.Email = obj.Email;
+      this.Phone = obj.Phone;
+      this.Title = obj.Title;
     }
   }

@@ -1,11 +1,25 @@
 mat-sidenav-container, mat-sidenav-content, mat-sidenav {
     height: 100%;
 }
- 
+html  {
+    height: 100%;
+    background-image: url('../assets/background.svg');
+    background-repeat: no-repeat;
+    background-size: 300% 300%;
+    background-position: right;
+}
 mat-sidenav {
     width: 250px;
 }
- 
+body {
+    background: url('../assets/background.svg')!;
+}
 main {
     padding: 10px;
+    height: 100%;
+    background-image: url('../assets/background.svg');
+    background-repeat: no-repeat;
+    background-size: 300% 300%;
+    background-position: right;
+    
 }

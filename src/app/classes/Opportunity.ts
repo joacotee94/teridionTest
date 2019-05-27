@@ -1,4 +1,5 @@
 export class Opportunity {
+  public id:string
   public name: string;
   public accName: string;
   public stageName: string;
@@ -9,12 +10,18 @@ export class Opportunity {
   public useCase: string;
   public nextStep: string
   public description: string;
+  public note:string;
 
 
 
   constructor (obj) {
+    this.id = obj.Id;
     this.name = obj.Name;
-    this.accName = obj.Account.Name;
+    if(obj.Account!=null){
+      this.accName = obj.Account.Name;
+    }else {
+      this.accName= '';
+    }
     this.stageName = obj.StageName;
     this.partnerName = obj.Partner_Name__c;
     this.mrr = obj.MRR__c;
@@ -23,6 +30,7 @@ export class Opportunity {
     this.useCase = obj.Oppty_Use_Case__c;
     this.nextStep = obj.NextStep;
     this.description = obj.Description;
+    this.note=obj.Note__c;
 
 
 

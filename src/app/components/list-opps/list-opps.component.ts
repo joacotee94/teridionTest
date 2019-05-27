@@ -17,7 +17,7 @@ export class ListOppsComponent implements OnInit {
     this.remoteActions.isAdmin()
     .then(result => {
       this.globals.isAdmin = result as boolean;
-      this.remoteActions.getOpportunities(true,[],'None','None','None','',null,null,null)
+      this.remoteActions.getOppForHomePage()
       .then(results => {
         console.log(results);
         this.mapObject(results);
