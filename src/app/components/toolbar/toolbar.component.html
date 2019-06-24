@@ -1,6 +1,6 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light toolbar">
-    <a class="navbar-brand" href="#"><img  [src]="'assets/Teridion.PNG' | staticpath"></a>
+<nav class="navbar navbar-expand-lg navbar-light toolbar">
+    <a class="navbar-brand" href="#"><img  [src]="'assets/Teridionpartner.svg' | staticpath" style="width: 100%"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample" (click)="isCollapsed = !isCollapsed">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -17,13 +17,13 @@
           <a class="nav-link option"  [routerLink]="['register-deal']">REGISTER DEAL</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link option" >RESOURCES</a>
+          <a class="nav-link option" [routerLink]="['resources']">RESOURCES</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link option" [routerLink]="['partner-docs']" >DOCUMENTS</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link option" >SHCEDULE DEMO</a>
+          <a class="nav-link option" href="https://app.acuityscheduling.com/schedule.php?owner=17431385&appointmentType=9569217" >SHCEDULE DEMO</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link option" [routerLink]="['company-info']">COMPANY</a>
@@ -32,19 +32,34 @@
       </ul>
     </div>
     <div class="form-inline my-2 my-lg-0 account">
-      <button mat-button>LOG OUT</button>
+      <a mat-button class="toolbar-button" href="partner/secur/logout.jsp">LOG OUT</a>
       <mat-icon>account_circle</mat-icon>
-      <button mat-button>ACCOUNT</button>
+      <button class="toolbar-button" style="width: fit-content;" mat-icon-button [matMenuTriggerFor]="menu">
+        <a style="margin-right:5px;" >ACCOUNT</a>
+      </button>
+
       <mat-chip *ngIf="globals.isAdmin">Admin</mat-chip>
       <mat-chip *ngIf="!globals.isAdmin">Guest</mat-chip>
     </div>
+    <mat-menu #menu="matMenu" [class]="'menu-dropdown'" [overlapTrigger]="false" >  
+        <button mat-menu-item [routerLink]="['company-info']">
+            Profile
+        </button>
+        <button *ngIf="globals.isAdmin" mat-menu-item [routerLink]="['users']">
+            Users
+        </button>
 
-    <mat-toolbar-row>
-        <div class="form-inline my-2 my-lg-0">
-            User: {{userName}}
-          </div>
-    </mat-toolbar-row>
+      </mat-menu>
   </nav>
+
+  <div class="container-fluid" style="width: 90%; display:inline-block">
+    <div style="text-align:rigth">
+      <div class="form-inline my-2 my-lg-0 user-name"  style="float: right;">
+        User: {{userName}}
+      </div>
+    </div>
+  </div>
+
 
 
 

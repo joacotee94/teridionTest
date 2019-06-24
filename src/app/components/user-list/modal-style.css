@@ -1,0 +1,16 @@
+.input {
+    margin:10px;
+}
+.example-container {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    width:100%;
+    background: white;
+  }
+  button {
+      background: #675EAD;
+      color: white;
+      border-radius: 5px;
+      border-width: 0px;
+  }

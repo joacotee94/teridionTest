@@ -10,11 +10,16 @@
 }
 .option {
     color:white !important;
+    font-size: 11px;
 }
-.account {
+.account{
     background-color: #646A76;
     border-radius: 10px;
     color: white;
+
+}
+.toolbar-button{
+    font-size: 11px;
 }
 .mat-chip {
     font-size: 10px;
@@ -29,4 +34,22 @@
     padding-right: 7px;
     background-color: #979797 !important;
     color: white !important;
+}
+.mat-button-wrapper{
+        font-size: 11px;
+        margin-right: 5px;
+}
+
+.user-name {
+    float: right;
+    font-size: 13px;
+    font-weight: bold;
+    font-style: italic;
+    color: #646A76;
+}
+.menu-dropdown {
+    top:50px !important;
+}
+:host .cdk-overlay-pane {   
+    top: 50px !important;
 }

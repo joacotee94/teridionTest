@@ -10,7 +10,7 @@ import { Opportunity } from '../../classes/Opportunity';
 })
 export class ListOppsComponent implements OnInit {
   dataSource: Array<Opportunity>;
-  displayedColumns = ['name','partnerName','mrr','owner','closeDate','useCase','nextStep','account','stageName'];
+  displayedColumns = ['account','name','useCase','stageName','owner','mrr'];
   constructor(private remoteActions: RemoteActionsService, private globals :Globals) { }
 
   ngOnInit() {

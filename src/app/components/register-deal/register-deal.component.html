@@ -1,15 +1,15 @@
-  <form [formGroup]="dealForm" class="example-container mat-elevation-z8" (ngSubmit)="createNewDeal()">
+  <form [formGroup]="dealForm" class="example-container mat-elevation-z8" >
     <mat-form-field>
-      <input matInput placeholder="Account Name" formControlName="accountName" >
+      <input matInput placeholder="Account Name*" formControlName="accountName" >
       <mat-error *ngIf="accountName.invalid">Required</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Opportunity Name" formControlName="oppName" >
+      <input matInput placeholder="Opportunity Name*" formControlName="oppName" >
       <mat-error *ngIf="oppName.invalid">Required</mat-error>
 
     </mat-form-field>
     <mat-form-field>
-      <mat-select placeholder="Opportunity Use Case" formControlName="selectedUseCase">
+      <mat-select placeholder="Opportunity Use Case*" formControlName="selectedUseCase" multiple>
           <mat-option *ngFor="let useCase of allUseCases" [value]="useCase.label">
               {{useCase.value}}
             </mat-option>
@@ -18,7 +18,7 @@
 
     </mat-form-field>
     <mat-form-field class='select'>
-      <input matInput [matDatepicker]="closedDatePicker" placeholder="Closed date" formControlName='closeDate' >
+      <input matInput [matDatepicker]="closedDatePicker" placeholder="Closed date*" formControlName='closeDate' >
       <mat-datepicker-toggle matSuffix [for]="closedDatePicker"></mat-datepicker-toggle>
       <mat-datepicker #closedDatePicker ></mat-datepicker>
       <mat-hint>mm/dd/yyyy</mat-hint>
@@ -28,32 +28,29 @@
     <mat-form-field>
       <input matInput placeholder="Monthly Recurring Charges (MRR)" formControlName="mrr" >  
       <mat-hint>Not Required, in USD (if known)</mat-hint>
-      <mat-error *ngIf="mrr.invalid">Required</mat-error>
 
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Contact First Name" formControlName="contactFirstName" >
+      <input matInput placeholder="Contact First Name*" formControlName="contactFirstName" >
       <mat-error *ngIf="contactFirstName.invalid">Required</mat-error>
 
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Contact Last Name" formControlName="contactLastName" >  
+      <input matInput placeholder="Contact Last Name*" formControlName="contactLastName" >  
       <mat-error *ngIf="contactLastName.invalid">Required</mat-error>
 
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Contact Title" formControlName="contactTitle" >
+      <input matInput placeholder="Contact Title*" formControlName="contactTitle" >
       <mat-error *ngIf="contactTitle.invalid">Required</mat-error>
 
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Contact Email" formControlName="contactEmail" >
-      <mat-error *ngIf="contactEmail.invalid">Required</mat-error>
-
+      <input matInput placeholder="Contact Email*" formControlName="contactEmail" >
+      <mat-error *ngIf="contactEmail.invalid">Please enter a valid email</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Contact Phone" formControlName="contactPhone" >
-      <mat-error *ngIf="contactPhone.invalid">Required</mat-error>
 
     </mat-form-field>
     <mat-form-field>

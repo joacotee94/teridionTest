@@ -1,16 +1,16 @@
 <div class="example-container mat-elevation-z8">
   <div class="filter-container">
     <mat-form-field class='select' *ngIf="globals.isAdmin">
-        <mat-label>OWNER</mat-label>
-        <mat-select [(value)]="ownerSelected" (selectionChange)="getOpporotunities()">
-          <mat-option value="none">
-            None
-          </mat-option>
-          <mat-option *ngFor="let user of allOwners" [value]="user.name">
-            {{user.name}}
-          </mat-option>
-      </mat-select> 
-    </mat-form-field>
+      <mat-label>OWNER</mat-label>
+      <mat-select [(value)]="ownerSelected" (selectionChange)="getOpporotunities()">
+        <mat-option value="none">
+          None
+        </mat-option>
+        <mat-option *ngFor="let user of allOwners" [value]="user.value">
+          {{user.label}} 
+        </mat-option>
+    </mat-select> 
+  </mat-form-field>
     <mat-form-field class='select'>
         <mat-label>USE CASE</mat-label>
       <mat-select [(value)]="useCaseSelected" (selectionChange)="getOpporotunities()">

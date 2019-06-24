@@ -33,9 +33,9 @@ export class RemoteActionsService {
     }
 
     //Oportunity component
-    getOpportunities(isAdmin,userIds,ownerSelected,useCaseSelected,stageSelected,account,createdDate,closeDate,probability) {
+    getOpportunities(isAdmin,ownerSelected,useCaseSelected,stageSelected,account,createdDate,closeDate,probability) {
         return new Promise((resolve, reject) => {
-          this.callRemote('CommunityFachadeController.getOpportunities', [isAdmin,userIds,ownerSelected,useCaseSelected,stageSelected,account,createdDate,closeDate,probability], resolve, reject)
+          this.callRemote('CommunityFachadeController.getOpportunities', [isAdmin,ownerSelected,useCaseSelected,stageSelected,account,createdDate,closeDate,probability], resolve, reject)
         })
     }
     getAllUsers() {
@@ -122,9 +122,34 @@ export class RemoteActionsService {
         this.callRemote('CommunityFachadeController.getCurrentUserType',[],resolve,reject)
       })
     }
+    getQuarterGraph() {
+      return new Promise((resolve,reject)=> {
+        this.callRemote('CommunityFachadeController.getQuarterSalesGraphData',[],resolve,reject)
+      })
+    }
     updateOppNote(id,val) {
       return new Promise((resolve,reject)=>{
         this.callRemote('CommunityFachadeController.updateNote',[id,val],resolve,reject)
+      })
+    }
+    getResource(docType) {
+      return new Promise((resolve,reject) => { 
+        this.callRemote('CommunityFachadeController.getAttachments',[docType],resolve,reject)
+      })
+    }
+    getUsers() {
+      return new Promise((resolve,reject) => {
+        this.callRemote('CommunityFachadeController.getAllUsers',[],resolve,reject)
+      })
+    }
+    createUser(firstName,lastName,email,phone,title,roleName) {
+      return new Promise((resolve,reject)=>{
+       this.callRemote('CommunityFachadeController.registerUser',[firstName,lastName,email,phone,title,roleName],resolve,reject)
+      })
+    }
+    updateUser(id,firstName,lastName,email,phone,title,roleName) {
+      return new Promise((resolve,reject)=>{
+       this.callRemote('CommunityFachadeController.updateUser',[id,firstName,lastName,email,phone,title,roleName],resolve,reject)
       })
     }
 }

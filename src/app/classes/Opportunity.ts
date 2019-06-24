@@ -24,7 +24,7 @@ export class Opportunity {
     }
     this.stageName = obj.StageName;
     this.partnerName = obj.Partner_Name__c;
-    this.mrr = obj.MRR__c;
+    this.mrr = obj.MRR_Estimated_Committed__c;
     this.ownerName = obj.Owner.Name;
     this.closedDate = obj.CloseDate;
     this.useCase = obj.Oppty_Use_Case__c;

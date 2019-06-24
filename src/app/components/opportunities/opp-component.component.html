@@ -4,7 +4,7 @@
         <mat-label>OWNER</mat-label>
         <mat-select [(value)]="ownerSelected" (selectionChange)="getOpporotunities()">
           <mat-option *ngFor="let user of allOwners" [value]="user.value">
-            {{user.name}}
+            {{user.label}}
           </mat-option>
       </mat-select> 
     </mat-form-field>
@@ -45,7 +45,7 @@
   </mat-form-field>
   </div>
   
-  <mat-table #table [dataSource]="displaySource">
+  <mat-table #table [dataSource]="displaySource" [class.isMobile]="isMobile">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -53,52 +53,81 @@
     <!-- Position Column -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Opportinity Name </mat-header-cell>
-      <mat-cell *matCellDef="let element" data-label="Opp"> {{element.name}} </mat-cell>
+      <mat-cell *matCellDef="let element" data-label="Opp"> 
+        <span class="mobile-label"> Opportinity Name</span>
+        {{element.name}}
+       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="partnerName">
-        <mat-header-cell *matHeaderCellDef> Partner Name </mat-header-cell>
-        <mat-cell *matCellDef="let element" data-label="Partner"> {{element.partnerName}} </mat-cell>
+        <mat-header-cell *matHeaderCellDef>  Partner Name  </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Partner"> 
+            <span class="mobile-label">  Partner Name </span>
+          {{element.partnerName}} 
+        </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="mrr">
         <mat-header-cell *matHeaderCellDef> MRR </mat-header-cell>
-        <mat-cell *matCellDef="let element" data-label="MRR"> {{element.mrr}} </mat-cell>
+        <mat-cell *matCellDef="let element" data-label="MRR"> 
+          <span class="mobile-label"> MRR </span>
+          {{element.mrr}} 
+        </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="owner">
-        <mat-header-cell *matHeaderCellDef> Owner </mat-header-cell>
-        <mat-cell *matCellDef="let element" data-label="Owner"> {{element.ownerName}} </mat-cell>
+        <mat-header-cell *matHeaderCellDef>Owner </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Owner"> 
+            <span class="mobile-label">Owner</span>
+          {{element.ownerName}} 
+        </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="closeDate">
         <mat-header-cell *matHeaderCellDef> Close Date </mat-header-cell>
-        <mat-cell *matCellDef="let element" data-label="Close date"> {{element.closedDate  | date:'MM-dd-yyyy' }} </mat-cell>
+        <mat-cell *matCellDef="let element" data-label="Close date"> 
+            <span class="mobile-label">Close Date</span>
+          {{element.closedDate  | date:'MM-dd-yyyy' }} 
+        </mat-cell>
+
     </ng-container>
 
     <ng-container matColumnDef="useCase">
         <mat-header-cell *matHeaderCellDef> Use Case </mat-header-cell>
-        <mat-cell *matCellDef="let element" data-label="Use Case"> {{element.useCase}} </mat-cell>
+        <mat-cell *matCellDef="let element" data-label="Use Case"> 
+          <span class="mobile-label"> Use Case </span>
+          {{element.useCase}} 
+        </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="nextStep">
         <mat-header-cell *matHeaderCellDef> Next Step </mat-header-cell>
-        <mat-cell *matCellDef="let element" data-label="Next step"> {{element.nextStep}} </mat-cell>
+        <mat-cell *matCellDef="let element" data-label="Next step"> 
+            <span class="mobile-label"> Next Step</span>
+          {{element.nextStep}}
+         </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="stageName">
         <mat-header-cell *matHeaderCellDef> Stage </mat-header-cell>
-        <mat-cell *matCellDef="let element" data-label="Stage"> {{element.stageName}} </mat-cell>
+        <mat-cell *matCellDef="let element" data-label="Stage"> 
+          <span class="mobile-label"> Stage</span> 
+          {{element.stageName}} 
+        </mat-cell>
       </ng-container>
 
     <ng-container matColumnDef="account">
       <mat-header-cell *matHeaderCellDef> Account </mat-header-cell>
-      <mat-cell *matCellDef="let element" data-label="Account"> {{element.accName}} </mat-cell>
+      <mat-cell *matCellDef="let element" data-label="Account"> 
+          <span class="mobile-label"> Account</span>
+        {{element.accName}} 
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef> Edit Note </mat-header-cell>
       <mat-cell *matCellDef="let element" data-label="Edit Note">
+          <span class="mobile-label">Edit Note</span>
           <button mat-button [matMenuTriggerFor]="menu"><mat-icon >edit</mat-icon></button>
           <mat-menu #menu="matMenu" style="width: 100px">
             <div (click) = "$event.stopPropagation()">

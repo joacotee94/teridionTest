@@ -1,0 +1,13 @@
+.input {
+    margin:10px;
+}
+.example-container {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    width:100%;
+    background: white;
+  }
+  * { 
+    font-family: 'Proxima Nova', sans-serif;
+}

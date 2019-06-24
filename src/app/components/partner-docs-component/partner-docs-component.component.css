@@ -9,7 +9,10 @@
         padding-top: 12px;
         padding-left: 12px;
         padding-right: 12px;
-        max-height: 47px;
+        max-height: 47spx;
+    }
+    * { 
+        font-family: 'Proxima Nova', sans-serif;
     }
     .card-content {
         background-color: #4E535D; 

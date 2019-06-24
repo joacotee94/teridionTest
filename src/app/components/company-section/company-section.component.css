@@ -1,0 +1,10 @@
+@media (min-width: 1200px) {
+    .container  {
+        max-width: 100% !important;
+        min-width: 100% !important;
+    }
+
+}
+* { 
+    font-family: 'Proxima Nova', sans-serif;
+}

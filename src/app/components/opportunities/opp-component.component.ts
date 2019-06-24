@@ -22,8 +22,8 @@ export class OppComponent implements OnInit {
   public account:string;
   public probability :string;
   checked = false;
-  @Input() createdDate : Date;
-  @Input() closeDate : Date;
+  createdDate : Date;
+  closeDate : Date;
   public admin:boolean;
   checklist= {'All' : false };
   dataSource: Array<Opportunity>;
@@ -43,12 +43,12 @@ export class OppComponent implements OnInit {
     this.useCaseSelected='None';
     this.stageSelected='None';
     this.account='';
-    this.createdDate = new Date();
-    this.closeDate = new Date();
+    this.createdDate = null;
+    this.closeDate = null;
     this.remoteActions.isAdmin()
     .then(result => {
       this.globals.isAdmin = result as boolean;
-      this.remoteActions.getOpportunities(true,[],'None',['None'],'None','',null,null,null)
+      this.remoteActions.getOpportunities(this.globals.isAdmin,'None',['None'],'None','',null,null,null)
       .then(results => {
         console.log(results);
         this.mapObject(results);
@@ -79,7 +79,6 @@ export class OppComponent implements OnInit {
     this.getOpporotunities();
   }
   public getOpporotunities() {
-    let userIds = [];
     let closeDateParams;
     let createdDateParams;
     if( this.closeDate as any == '' || this.closeDate == null) {
@@ -87,15 +86,15 @@ export class OppComponent implements OnInit {
     }else {
       closeDateParams= this.closeDate.toUTCString();
     }
-    if( this.closeDate as any =='' || this.createdDate == null) {
+    if( this.createdDate as any =='' || this.createdDate == null) {
       createdDateParams= null;
     }else {
-      createdDateParams= this.closeDate.toUTCString();
+      createdDateParams= this.createdDate.toUTCString();
     }
     if(this.probability == "") {
       this.probability = null;
     }
-    this.remoteActions.getOpportunities(true,userIds,this.ownerSelected,this.selectedUseCases,this.stageSelected,this.account,createdDateParams,closeDateParams,this.probability)
+    this.remoteActions.getOpportunities(this.globals.isAdmin,this.ownerSelected,"('"+this.selectedUseCases.join("','")+"')",this.stageSelected,this.account,createdDateParams,closeDateParams,this.probability)
     .then(results =>{
       console.log(results);
       this.mapObject(results);

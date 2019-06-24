@@ -1,0 +1,35 @@
+<form  [formGroup]="user" > 
+    <p>Create User</p>
+    <div class="example-container">
+        <mat-form-field>
+            <input matInput class="input" placeholder="First Name" formControlName="firstName" >
+            <mat-error *ngIf="firstName.invalid">Required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput class="input" placeholder="Last Name" formControlName="lastName">
+            <mat-error *ngIf="lastName.invalid">Required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput class="input" placeholder="Email" formControlName="email">
+            <mat-error *ngIf="email.invalid">Required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput class="input" placeholder="Title" formControlName="title">
+            <mat-error *ngIf="title.invalid">Required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput class="input" placeholder="Phone" formControlName="phone">
+            <mat-error *ngIf="phone.invalid">Required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select placeholder="User Type" formControlName="role">
+                <mat-option *ngFor="let useCase of userTypes" [value]="useCase.label">
+                {{useCase.label}}
+                </mat-option>
+            </mat-select>
+        <mat-error *ngIf="role.invalid">Required</mat-error>
+        </mat-form-field>
+    </div>
+    <button type="submit" (click)="createUser()" [disabled]="!user.valid">Save</button>
+    <button type="button" (click)="closeFile()">Cancel</button>
+</form>

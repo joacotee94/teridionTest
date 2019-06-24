@@ -7,6 +7,7 @@ html  {
     background-repeat: no-repeat;
     background-size: 300% 300%;
     background-position: right;
+    color:#6A707C;
 }
 mat-sidenav {
     width: 250px;
@@ -23,3 +24,53 @@ main {
     background-position: right;
     
 }
+
+::ng-deep .mat-option-text {
+    color: #675EAD !important;
+}
+::ng-deep .mat-cell{
+    color: #979797 !important;
+}
+::ng-deep .mat-focused .mat-form-field-placeholder{
+    color:#675EAD !important;
+
+}
+::ng-deep .mat-form-field-placeholder{
+    color:#675EAD !important;
+  }
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color:#675EAD !important;
+}
+
+.not-empty-select.mat-selected {
+    color: #675EAD !important;
+  }
+.not-empty-select.mat-selected {
+    color: #675EAD !important;
+  }
+  
+  :host .mat-select-value-text {
+    color: #675EAD !important;
+  }
+  
+::ng-deep.mat-form-field-underline {
+/*change color of underline*/
+background-color:#675EAD !important;
+} 
+::ng-deep .mat-menu-item  {
+    color:#675EAD;
+}
+::ng-deep .mat-menu-item :hover {
+    color:#979797;
+    background: #26B35A;
+}
+::ng-deep.mat-form-field-ripple {
+/*change color of underline when focused*/
+background-color: #675EAD !important;;
+}
+
+* { 
+    font-family: 'Proxima Nova', sans-serif;
+}
+

@@ -1,4 +1,4 @@
-<form class="example-container  mat-elevation-z8" [formGroup]="user" (ngSubmit)="updateUser()"> 
+<form class="example-container  mat-elevation-z8" [formGroup]="user"> 
     <div class="container-fluid">
         <div style="text-align:center">
           <h1>
@@ -7,27 +7,37 @@
         </div>
     </div>
   <mat-form-field>
-    <input matInput placeholder="First Name" formControlName="FirstName"> 
+    <input matInput placeholder="First Name*" formControlName="FirstName"> 
+    <mat-error *ngIf="FirstName.invalid">Required</mat-error>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Last Name" formControlName="LastName">
+    <input matInput placeholder="Last Name*" formControlName="LastName">
+    <mat-error *ngIf="LastName.invalid">Required</mat-error>
+
   </mat-form-field>
   <mat-form-field>
-      <input matInput placeholder="Title" formControlName="Title">
+      <input matInput placeholder="Title*" formControlName="Title">
+    <mat-error *ngIf="Title.invalid">Required</mat-error>
+
   </mat-form-field>
   <mat-form-field>  
-    <input matInput placeholder="Email" formControlName="Email">
+    <input matInput placeholder="Email*" formControlName="Email">
+    <mat-error *ngIf="Email.invalid">Required</mat-error>
+
   </mat-form-field>
   <mat-form-field>
     <input matInput placeholder="Phone" formControlName="Phone">
+    
   </mat-form-field>
+
   <mat-form-field>
-    <mat-select placeholder="User Type" formControlName="Type">
+    <mat-select placeholder="User Type*" formControlName="Type" [disabled]="!globals.isAdmin">
         <mat-option *ngFor="let useCase of userTypes" [value]="useCase.value">
           {{useCase.label}}
         </mat-option>
     </mat-select>
+
   </mat-form-field>
   <div class="button-row">
       <button type="submit" mat-raised-button color="primary" (click)="updateUser()" [disabled]="!user.valid">Save</button>

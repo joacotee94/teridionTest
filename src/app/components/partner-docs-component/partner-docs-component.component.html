@@ -6,10 +6,9 @@
     </div>
     <div class="container-fluid cards-display" >
       <div style="text-align:center">
-        <div class="upload-button">
+        <div class="upload-button" (click)="openDialog()">
           <mat-icon>cloud_upload</mat-icon>
           <label for="file">Upload File</label>
-          <input type="file" id="file" (change)="handleFileInput($event.target.files)">
         </div> 
       </div>
       <div class="card-container" >

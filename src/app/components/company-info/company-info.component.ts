@@ -32,10 +32,10 @@ export class CompanyInfoComponent implements OnInit {
   createDealForm(partner: Partner) {
     return new FormGroup({
       Name: new FormControl(partner.Name, [Validators.required]),
-      Website: new FormControl(partner.Website, [Validators.required]),
-      hearAboutTeridion__c: new FormControl(partner.hearAboutTeridion__c, [Validators.required]),
-      numberOflocations__c: new FormControl(partner.numberOflocations__c, [Validators.required]),
-      BillingPostalCode: new FormControl(partner.BillingPostalCode, []),
+      Website: new FormControl(partner.Website, []),
+      hearAboutTeridion__c: new FormControl(partner.hearAboutTeridion__c, []),
+      numberOflocations__c: new FormControl(partner.numberOflocations__c, []),
+      BillingStreet: new FormControl(partner.BillingPostalCode+ ', ' +partner.BillingCountry+', ' + partner.BillingCity+', '+partner.BillingState, []),
       BillingCountry: new FormControl(partner.BillingCountry,[] ),
       BillingCity: new FormControl(partner.BillingCity,[] ),
       BillingState: new FormControl(partner.BillingState,[] ),

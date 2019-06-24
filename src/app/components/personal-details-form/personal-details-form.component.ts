@@ -45,7 +45,7 @@ export class PersonalDetailsFormComponent implements OnInit {
       LastName: new FormControl(user.LastName, [Validators.required]),
       Title: new FormControl(user.Title, [Validators.required]),
       Email: new FormControl(user.Email, [Validators.required]),
-      Phone: new FormControl(user.Phone, [Validators.required]),
+      Phone: new FormControl(user.Phone, []),
       Type: new FormControl('', [Validators.required])
     })
   } 
@@ -64,19 +64,19 @@ export class PersonalDetailsFormComponent implements OnInit {
   } 
 
   get FirstName() {
-    return this.user.get('firstName');
+    return this.user.get('FirstName');
   }
   get LastName() {
-    return this.user.get('lastName');
+    return this.user.get('LastName');
   }
   get Title() {
-    return this.user.get('title');
+    return this.user.get('Title');
   }
   get Email() {
-    return this.user.get('email');
+    return this.user.get('Email');
   }
   get Phone() {
-    return this.user.get('phone');
+    return this.user.get('Phone');
   }
   get Type() {
     return this.user.get('type');

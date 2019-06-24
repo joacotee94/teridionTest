@@ -14,9 +14,12 @@ gulp.task('deploytosf', () => {
 
 gulp.task('prepareForDeploy', () => {
   console.log('Change detected, preparing to deploy!')
-  return run('python salesforce/visualforce_transform.py --assets sftestassets --controller CommunityFachadeController --pagename communityAngularPage --builddir src-dev-deploy').exec('', function(e) {
+  return run('python salesforce/visualforce_transform.py --assets sftestassets --controller CommunityFachadeController --pagename CommunityAngularPage --builddir src-dev-deploy').exec('', function(e) {
     if (e && e.status) {
       console.log("Pre-prep script failed. NOT DEPLOYING");
+      console.log(e);
+      console.log(e.status);
+
       if (exitOnFailure) {
         process.exit(1);
       }

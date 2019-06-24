@@ -1,0 +1,52 @@
+<div class="example-container mat-elevation-z8">
+    <div class="container-fluid cards-display" >
+      <div style="text-align:center; cursor:pointer">
+          <div class="add-user-button" (click)="openDialog()">
+            <label for="file"> <mat-icon style="vertical-align: text-bottom;margin-left: 3px;margin-right: 5px;">person_add</mat-icon>Add User </label>
+          </div> 
+        </div>
+      </div>
+    <mat-table #userTable [dataSource]="dataSource">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="FirstName">
+        <mat-header-cell *matHeaderCellDef >First Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.user.FirstName}} </mat-cell>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="LastName">
+        <mat-header-cell *matHeaderCellDef > Last Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.user.LastName}} </mat-cell>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="userType">
+        <mat-header-cell *matHeaderCellDef > User Type </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.userType}} </mat-cell>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Role">
+        <mat-header-cell *matHeaderCellDef > Role </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.role}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Phone">
+          <mat-header-cell *matHeaderCellDef > Phone </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.user.Phone}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef > Email </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.user.Email}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="edit">
+          <mat-header-cell *matHeaderCellDef > Edit </mat-header-cell>
+          <mat-cell *matCellDef="let element"> <div (click)="openEditUserDialog(element)"><mat-icon>edit</mat-icon></div></mat-cell>
+      </ng-container>
+
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>

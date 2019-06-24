@@ -55,9 +55,13 @@ import * as FusionCharts from 'fusioncharts';
 import * as Charts from 'fusioncharts/fusioncharts.charts';
 import { SalesGraphComponent } from './components/sales-graph/sales-graph.component';
 import { HomeComponentComponent } from './components/home-component/home-component.component';
-import { PartnerDocsComponentComponent } from './components/partner-docs-component/partner-docs-component.component';
+import { PartnerDocsComponentComponent, DocDialog } from './components/partner-docs-component/partner-docs-component.component';
 import { CompanyInfoComponent } from './components/company-info/company-info.component';
 import { CompanySectionComponent } from './components/company-section/company-section.component';
+import { QuarterGraphComponent } from './components/quarter-graph/quarter-graph.component';
+import { ResourcesComponent } from './components/resources/resources.component';
+import { UserListComponent, NewUserDialog,EditUserDialog } from './components/user-list/user-list.component';
+import { SmallUserListComponent } from './components/small-user-list/small-user-list.component';
 FusionChartsModule.fcRoot(
   FusionCharts,
   Charts,
@@ -86,7 +90,14 @@ FusionChartsModule.fcRoot(
     HomeComponentComponent,
     PartnerDocsComponentComponent,
     CompanyInfoComponent,
-    CompanySectionComponent
+    CompanySectionComponent,
+    DocDialog,
+    NewUserDialog,
+    EditUserDialog,
+    QuarterGraphComponent,
+    ResourcesComponent,
+    UserListComponent,
+    SmallUserListComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,7 +109,9 @@ FusionChartsModule.fcRoot(
       { path: 'home', component: HomeComponentComponent},
       { path: 'register-deal', component: RegisterDealComponent},
       { path: 'partner-docs', component: PartnerDocsComponentComponent},
-      { path: '*', component: HomeComponentComponent}
+      { path: 'resources', component: ResourcesComponent },
+      { path: 'users', component: UserListComponent },
+      { path: '**', component: HomeComponentComponent}
 
     ]),MatButtonModule,
     MatCardModule,
@@ -124,6 +137,7 @@ FusionChartsModule.fcRoot(
     RemoteActionsService,Globals
   ],
   bootstrap: [AppComponent],
+  entryComponents:[DocDialog,NewUserDialog,EditUserDialog],
   
 })
 export class AppModule { }

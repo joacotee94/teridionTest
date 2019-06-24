@@ -1,3 +1,6 @@
+* { 
+    font-family: 'Proxima Nova', sans-serif;
+}
 .oppList {
     float: left;
     overflow-y: scroll;
