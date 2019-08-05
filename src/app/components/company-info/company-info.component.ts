@@ -83,6 +83,9 @@ export class CompanyInfoComponent implements OnInit {
   get BillingState() {
     return this.partner.get('BillingState');
   }  
+  get BillingStreet() {
+    return this.partner.get('BillingStreet');
+  }  
   get overAllHeadCount__c() {
     return this.partner.get('overAllHeadCount__c');
   }

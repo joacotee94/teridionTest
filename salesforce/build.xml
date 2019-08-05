@@ -22,7 +22,7 @@
 				checkOnly="false"
 				maxPoll="200"
 				pollWaitMillis="10000"
-				testLevel="NoTestRun"
+				testLevel=""
 				rollbackOnError="true"
 			/>
 	</target>

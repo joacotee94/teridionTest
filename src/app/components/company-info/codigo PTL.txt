@@ -1,0 +1,88 @@
+List<Pricebook2> booksEUR = [SELECT id, Name FROM Pricebook2 WHERE Name Like 'Box EUR' ];
+List<Pricebook2> booksUSD = [SELECT id, Name FROM Pricebook2 WHERE Name Like 'Box USD' ];
+List<Pricebook2> standard= [SELECT id, Name FROM Pricebook2 WHERE isStandard =true];
+
+List<Product_Type_by_location__c> ptbList = [SELECT ID, ProductTypeJunction__c,Product_Type__r.Name FROM Product_Type_by_location__c];
+List<Product2> existingP2= [SELECT Id, Name From Product2];
+Map<String,Product2> mapP2= new Map<String,Product2>();
+for(Product2 p2: existingP2 ) {
+    mapP2.put(p2.Name, p2);
+}
+Map<String,Product2> newP2 = new Map<String,Product2>();
+List<Product_Type_by_location__c> ptblWithExitingProds= new List<Product_Type_by_location__c>();
+List<Product2> pToinsert= new List<Product2>();
+Map<Id,Product_Type_by_location__c> mapPTBL = new Map<Id,Product_Type_by_location__c> (ptbList);
+for(Product_Type_by_location__c ptbl :mapPTBL.values()) {
+	System.debug(ptbl.Product_Type__r.Name);
+    if(mapP2.get(ptbl.Product_Type__r.Name)!=null) {
+        System.debug('exist');
+        ptbl.Product__c= mapP2.get(ptbl.Product_Type__r.Name).Id;
+        ptblWithExitingProds.add(ptbl);
+    }else {
+        System.debug('Dont exist');
+        Product2 p2= new Product2();
+        p2.Name= ptbl.Product_Type__r.Name;
+        p2.Actualizado__c= true;
+        p2.Family = 'Producto'; 
+        p2.IsActive= true;
+        newP2.put(p2.Name,p2);
+      
+        
+    }
+
+}
+insert newP2.values();
+List<PricebookEntry> newentries = new List<PricebookEntry>();
+List<PricebookEntry> standardList = new List<PricebookEntry>();
+List<Product_Type_by_location__c> ptblNoExitingP2= new List<Product_Type_by_location__c>();
+for(Product_Type_by_location__c ptbl :mapPTBL.values()) {
+    if(mapP2.get(ptbl.Product_Type__r.Name)!=null) {
+        
+    }else {   
+        System.debug(ptbl.Product_Type__r.Name);
+    	ptbl.Product__c = newP2.get(ptbl.Product_Type__r.Name).Id;
+        ptblNoExitingP2.add(ptbl);
+        PricebookEntry peEu= New PricebookEntry();
+        peEu.UseStandardPrice=false;
+        peEu.Product2Id=newP2.get(ptbl.Product_Type__r.Name).Id;
+        peEu.Pricebook2Id= booksEUR[0].Id;
+        peEu.IsActive=true;
+		peEu.UnitPrice=500;
+        peEu.CurrencyIsoCode='EUR';
+        newentries.add(peEu);
+        PricebookEntry peUSD= New PricebookEntry();
+        peUSD.UseStandardPrice=false;
+        peUSD.IsActive=true;
+        peUSD.Product2Id=newP2.get(ptbl.Product_Type__r.Name).Id;
+        peUSD.Pricebook2Id = booksUSD[0].Id;
+        peUSD.UnitPrice=500;
+        peUSD.CurrencyIsoCode='USD';
+        newentries.add(peUSD);
+        PricebookEntry stand=  New PricebookEntry();
+        stand.UseStandardPrice=false;
+        stand.IsActive=true;
+        stand.CurrencyIsoCode='USD';
+        stand.Product2Id=newP2.get(ptbl.Product_Type__r.Name).Id;
+        stand.Pricebook2Id = standard[0].Id;
+        stand.UnitPrice=500;
+        standardList.add(stand);
+        PricebookEntry stand2 =  New PricebookEntry();
+        stand2.UseStandardPrice=false;
+        stand2.IsActive=true;
+        stand2.CurrencyIsoCode='EUR';
+        stand2.Product2Id=newP2.get(ptbl.Product_Type__r.Name).Id;
+        stand2.Pricebook2Id = standard[0].Id;
+        stand2.UnitPrice=500;
+        standardList.add(stand2);
+
+        
+    }
+}
+insert standardList;
+insert newentries;
+update ptblWithExitingProds;
+update ptblNoExitingP2;
+
+
+
+

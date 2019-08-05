@@ -17,7 +17,9 @@
     overflow: auto;
     max-height: 500px;
   }
-  
+  .mat-row {
+    padding-left: 0px !important;
+  }
   .select {
     width:120px;
     margin: 15px;

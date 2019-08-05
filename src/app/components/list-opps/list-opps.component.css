@@ -35,6 +35,24 @@
     align-content: center;
     padding: 30px;
   }
+  .mat-column-mrr {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 70px !important;
+    width: 70px !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-all;
+    /* Instead use this non-standard one: */
+    word-break: break-word;
+  
+    /* Adds a hyphen where the word breaks, if supported (No Blink) */
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
   .mat-column-useCase {
       word-wrap: break-word !important;
       white-space: unset !important;
@@ -94,8 +112,35 @@
   ::ng-deep .mat-header-row, .mat-row {
     padding-left: 0 !important;
   }
-  
-  @media(max-width: 800px) {
+  .teridion-card {
+    overflow-x: auto;
+  }
+  @media screen and (max-width:1200px) {
+    .teridion-card {
+      margin-left: 0px !important;
+      margin-right: 0px !important  ;
+    }
+    .mat-column-useCase {
+      word-wrap: break-word !important;
+      white-space: unset !important;
+      flex: 0 0 300px !important;
+      width: 100px !important;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    
+      word-break: break-all;
+      /* Instead use this non-standard one: */
+      word-break: break-word;
+    
+      /* Adds a hyphen where the word breaks, if supported (No Blink) */
+      -ms-hyphens: auto;
+      -moz-hyphens: auto;
+      -webkit-hyphens: auto;
+      hyphens: auto;
+  }
+
+  }
+  @media screen and (max-width: 800px) {
     .mat-column-useCase {
         flex: 0 0 0px !important;
     }
@@ -115,7 +160,52 @@
       padding: 8px 24px;
       padding-left: 0;
     }
+    .teridion-card {
+      margin-left: 0px !important;
+      margin-right: 0px !important  ;
+    }
+    .teridion-graph {
+      overflow-x: scroll;
+    }
+    .mat-column-useCase {
+      word-wrap: break-word !important;
+      white-space: unset !important;
+      flex: 0 0 300px !important;
+      width: 100px !important;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    
+      word-break: break-all;
+      /* Instead use this non-standard one: */
+      word-break: break-word;
+    
+      /* Adds a hyphen where the word breaks, if supported (No Blink) */
+      -ms-hyphens: auto;
+      -moz-hyphens: auto;
+      -webkit-hyphens: auto;
+      hyphens: auto;
+  }
 
+  }
+  @media screen and (max-width: 1700px) {
+    .mat-column-useCase {
+      word-wrap: break-word !important;
+      white-space: unset !important;
+      flex: 0 0 80px !important;
+      width: 100% !important;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    
+      word-break: break-all;
+      /* Instead use this non-standard one: */
+      word-break: break-word;
+    
+      /* Adds a hyphen where the word breaks, if supported (No Blink) */
+      -ms-hyphens: auto;
+      -moz-hyphens: auto;
+      -webkit-hyphens: auto;
+      hyphens: auto;
+  }
   }
   
   

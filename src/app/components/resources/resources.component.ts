@@ -16,6 +16,7 @@ export class ResourcesComponent implements OnInit {
   solutionsBriefs:Array<Object>;
   playbooks:Array<Object>;
   competitive:Array<Object>;
+  marketing:Array<Object>;
   constructor(private globals:Globals,private remoteActions : RemoteActionsService) { 
     this.allResources= new Array<Object>();
     this.globals.title="RESOURCES";
@@ -57,6 +58,11 @@ export class ResourcesComponent implements OnInit {
     this.remoteActions.getResource('Competitive').then((res)=> { 
       this.competitive = res as Array<Object>;
       this.allResources = this.allResources.concat(this.competitive);
+
+    });
+    this.remoteActions.getResource('Marketing').then((res)=> { 
+      this.marketing = res as Array<Object>;
+      this.allResources = this.allResources.concat(this.marketing);
 
     });
 

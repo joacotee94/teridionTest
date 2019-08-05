@@ -8,8 +8,9 @@
           </mat-option>
       </mat-select> 
     </mat-form-field>
-    <div class='select'>
-      <button mat-button [matMenuTriggerFor]="menu">USE CASE <mat-icon >arrow_drop_down</mat-icon></button>
+    <div class='select'> 
+      <button mat-button [matMenuTriggerFor]="menu" style="border-bottom-color: #675EAD !important;border-bottom-style: solid !important;border-bottom-width: 1px !important;padding: 0px !important;width: 100% !important;">
+        <span>USE CASE</span> <mat-icon style="float: right;">arrow_drop_down</mat-icon></button>
         <mat-menu #menu="matMenu">
           <div (click) = "$event.stopPropagation()">
             <mat-checkbox class="select" *ngFor="let useCase of allUseCases" [(ngModel)]="checklist[useCase.value]" labelPosition="after" (change)="toggledCheckbox(useCase.value)" >

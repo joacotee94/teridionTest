@@ -1,6 +1,6 @@
 
 <nav class="navbar navbar-expand-lg navbar-light toolbar">
-    <a class="navbar-brand" href="#"><img  [src]="'assets/Teridionpartner.svg' | staticpath" style="width: 100%"></a>
+    <a class="navbar-brand" [routerLink]="['home']" ><img  [src]="'assets/TeridionPortalTitle.svg' | staticpath" style="width: 100%"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample" (click)="isCollapsed = !isCollapsed">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -23,7 +23,7 @@
           <a class="nav-link option" [routerLink]="['partner-docs']" >DOCUMENTS</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link option" href="https://app.acuityscheduling.com/schedule.php?owner=17431385&appointmentType=9569217" >SHCEDULE DEMO</a>
+          <a class="nav-link option"  target="_blank" href="https://app.acuityscheduling.com/schedule.php?owner=17431385&appointmentType=9569217" >SCHEDULE DEMO</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link option" [routerLink]="['company-info']">COMPANY</a>

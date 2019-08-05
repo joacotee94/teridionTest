@@ -49,7 +49,10 @@ export class RegisterDealComponent implements OnInit {
     this.remoteActions.registerDeal(this.dealForm.get('accountName').value, this.dealForm.get('oppName').value, this.dealForm.get('selectedUseCase').value.join(';'), this.dealForm.get('closeDate').value.toUTCString(), this.dealForm.get('mrr').value, this.dealForm.get('contactFirstName').value, this.dealForm.get('contactLastName').value, this.dealForm.get('contactTitle').value, this.dealForm.get('contactEmail').value, this.dealForm.get('contactPhone').value, this.dealForm.get('contactDetails').value)
       .then(res => {
         this.openSnackBar(res);
-        this.dealForm.reset();
+        var s = res as string;
+        if(s.includes('submitted')) {
+          this.dealForm.reset();
+        }
       })
       .catch(err => this.openSnackBar(err));
 

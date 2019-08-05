@@ -15,9 +15,9 @@ export class SalesGraphComponent implements OnInit {
   chart:any;
   data ={
     chart:{
-      caption:"TOTAL SALES",
+      caption:"",
       yaxisname:"",
-      subcaption:"Current Quarter + Next 3 Calendars Quarters",
+      subcaption:"",
       flatscrollbars: "0",
       scrollheight: "12",
       numvisibleplot: "8",
@@ -30,26 +30,26 @@ export class SalesGraphComponent implements OnInit {
             ]
         }
     ],
-    dataset:[
-      {
-        seriesName:'Qualification',
-        data:[]
-      },
-      {
-        seriesName:'Pending Approval',
-        data:[]
-      }
-    ]
+    dataset:[]
   };
   constructor(private remoteAction:RemoteActionsService) { 
     this.remoteAction.getSalesData()
     .then((res)=>{
       var result = res as Array<Object>;
+      var getKeys=  Object.keys(res[0].oppMap);
+      for(var keyI=0;keyI<getKeys.length;keyI++) {
+        var label = getKeys[keyI] as string;
+        this.data.dataset.push({seriesName: label,data:[]});
+      }
+
       for (let index = 0; index < result.length; index++) {
         const element = res[index];
         this.data.categories[0].category.push({label : element.name});
-        this.data.dataset[0].data.push({value: element.oppMap['Qualification']});
-        this.data.dataset[1].data.push({value: element.oppMap['Pending approval']});
+        var keys = Object.keys(element.oppMap);
+        for(var keyI = 0; keyI < keys.length; keyI++) {
+          
+          this.data.dataset[keyI].data.push({value: element.oppMap[this.data.dataset[keyI].seriesName]});
+        }
       }
       console.log(this.data);
     }).catch((err)=>console.log(err));

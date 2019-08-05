@@ -37,7 +37,7 @@ export class UserListComponent implements OnInit {
     },
   };
   constructor(private remoteAction: RemoteActionsService,private globals: Globals,public dialog: MatDialog) {
-
+    this.globals.title='USERS';
    }
 
   openDialog(): void {

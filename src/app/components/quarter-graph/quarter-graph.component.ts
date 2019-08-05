@@ -15,9 +15,9 @@ export class QuarterGraphComponent implements OnInit {
   chart:any;
   data ={
     chart:{
-      caption:"Won MRR(in USD)",
+      caption:"",
       yaxisname:"",
-      subcaption:"Per Quarter",
+      subcaption:"",
       flatscrollbars: "0",
       scrollheight: "12",
       numvisibleplot: "8",
