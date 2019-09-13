@@ -8,25 +8,25 @@
     <div class="collapse navbar-collapse"  id="collapseExample" [ngbCollapse]="isCollapsed">
       <ul class="navbar-nav mr-auto menu">
         <li class="nav-item ">
-          <a class="nav-link option" [routerLink]="['home']">HOME</a>
+          <a class="nav-link option toolbarWA" name="#home" ng-reflect-router-link="home" href="#" onclick="return false;">HOME</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link option" [routerLink]="['opps']">OPPORTUNITIES</a>
+          <a class="nav-link option toolbarWA" name="#opps" ng-reflect-router-link="opps" href="#opps" onclick="return false;">OPPORTUNITIES</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link option"  [routerLink]="['register-deal']">REGISTER DEAL</a>
+          <a class="nav-link option toolbarWA" name="#register-deal" href="#register-deal" onclick="return false;">REGISTER DEAL</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link option" [routerLink]="['resources']">RESOURCES</a>
+          <a class="nav-link option toolbarWA" name="#resources"  href="#resources" onclick="return false;">RESOURCES</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link option" [routerLink]="['partner-docs']" >DOCUMENTS</a>
+          <a class="nav-link option toolbarWA" name="#partner-docs" href="#partner-docs" onclick="return false;">DOCUMENTS</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link option"  target="_blank" href="https://app.acuityscheduling.com/schedule.php?owner=17431385&appointmentType=9569217" >SCHEDULE DEMO</a>
+          <a class="nav-link option toolbarWA"  target="_blank" href="https://app.acuityscheduling.com/schedule.php?owner=17431385&appointmentType=9569217" override='true'>SCHEDULE DEMO</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link option" [routerLink]="['company-info']">COMPANY</a>
+          <a class="nav-link option toolbarWA" name="#company-info" href="#company-info" onclick="return false;">COMPANY</a>
         </li>
   
       </ul>
@@ -42,10 +42,10 @@
       <mat-chip *ngIf="!globals.isAdmin">Guest</mat-chip>
     </div>
     <mat-menu #menu="matMenu" [class]="'menu-dropdown'" [overlapTrigger]="false" >  
-        <button mat-menu-item [routerLink]="['company-info']">
+        <button mat-menu-item  [routerLink]="['company-info']"   >
             Profile
         </button>
-        <button *ngIf="globals.isAdmin" mat-menu-item [routerLink]="['users']">
+        <button  *ngIf="globals.isAdmin" mat-menu-item   [routerLink]="['users']" >
             Users
         </button>
 

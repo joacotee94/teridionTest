@@ -10,7 +10,7 @@
 <mat-table #table [dataSource]="dataSource" [class.isMobile]="isMobile" class="max-heigth:100%;">
   
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Opportinity Name </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Opportunity Name </mat-header-cell>
       <mat-cell *matCellDef="let element" data-label="Opp"><span class="mobile-label">Opportinity Name</span> {{element.name}} </mat-cell>
     </ng-container>
 
