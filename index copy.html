@@ -1,0 +1,119 @@
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8"></meta>
+    <title>Teridion Partner Portal</title>
+    <base href="/"></base>
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <link rel="icon" type="image/x-icon" href="favicon.ico"></link>
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css" />
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <style type="text/css">
+      g[class^='raphael-group-'][class$='-creditgroup'] {
+           display:none !important;
+      }
+    </style>
+  
+  </head>
+  <body style="
+  background: url('{! $Resource.Community_Backgound }');
+  /* background-position: 300% 300%; */ 
+  /* background-size: 300% 300%; */
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: 200%;
+  ">  
+   <style>
+      @font-face { 
+        font-family: 'Proxima Nova Thin';
+        src: url('{!URLFOR($Resource.#RESOURCES#,"/assets/fonts/MarkSimonson-ProximaNovaThin-webfont.eot")}');
+        src: url('{!URLFOR($Resource.#RESOURCES#,"/assets/fonts/ProximaNovaThin-webfont.eot?#iefix")}') format('embedded-opentype'),
+          url('{!URLFOR($Resource.#RESOURCES#,"/assets/fonts/ProximaNovaThin-webfont.woff")}') format('woff'),
+          url('{!URLFOR($Resource.#RESOURCES#,"/assets/fonts/ProximaNovaThin-webfont.woff2")}') format('woff2'),
+          url('{!URLFOR($Resource.#RESOURCES#,"/assets/fonts/ProximaNovaThin-webfont.ttf")}') format('truetype'),
+          url('{!URLFOR($Resource.#RESOURCES#,"/assets/fonts/MarkSimonson-ProximaNovaThin-webfont.svg#proxima_nova_scosfthin")}') format('svg');
+          font-weight: normal;
+          font-style: normal;
+    }
+    @font-face {
+      font-family: 'Proxima Nova';
+      src: url('{!URLFOR($Resource.#RESOURCES#,"/assets/fonts/ProximaNovaAltRegular-webfont.eot")}');
+      src: url('{!URLFOR($Resource.#RESOURCES#,"/assets/fonts/ProximaNovaAltRegular-webfont.eot?#iefix")}') format('embedded-opentype'),
+        url('{!URLFOR($Resource.#RESOURCES#,"/assets/fonts/ProximaNovaAltRegular-webfont.woff")}') format('woff'),
+        url('{!URLFOR($Resource.#RESOURCES#,"/assets/fonts/ProximaNovaAltRegular-webfont.ttf")}') format('truetype'),
+        url('{!URLFOR($Resource.#RESOURCES#,"/assets/fonts/ProximaNovaAltRegular-webfont.svg#proxima_nova_altregular")}') format('svg');
+        font-weight: normal;
+        font-style: normal;
+  
+  
+  }
+    * { 
+      font-family: 'Proxima Nova', sans-serif;
+  }
+   </style>
+  
+    <app-root></app-root>
+    <script>
+      g_sf_api_wrapper = null;
+      if (typeof $SFCONTROLLER !== 'undefined') {
+        g_sf_api_wrapper = $SFCONTROLLER;
+      }
+      g_sf_page_root = '';
+      if (typeof $SFPAGEROOT !== 'undefined') {
+        g_sf_page_root = $SFPAGEROOT;
+      }
+      g_sf_static_root = "{!URLFOR($Resource.#RESOURCES#, 'favicon.ico')}"
+      if (!(g_sf_static_root[0] === "{")) { //in local mode this will not have been replaced
+        g_sf_static_root = g_sf_static_root.substr(0, g_sf_static_root.lastIndexOf('/')) + '/';
+      } else {
+        g_sf_static_root = "";
+      }
+      
+      function getSfStaticResourceRoot() {
+          return g_sf_static_root;
+      }
+  
+      function getSfPageRoot() {
+        return g_sf_page_root;
+      }
+  
+      function getSfApiWrapper() {
+        return g_sf_api_wrapper;
+      }
+  </script>
+  <script type="text/javascript" src="inline.bundle.js"></script><script type="text/javascript" src="polyfills.bundle.js"></script><script type="text/javascript" src="styles.bundle.js"></script><script type="text/javascript" src="vendor.bundle.js"></script><script type="text/javascript" src="main.bundle.js"></script></body>
+  <script src="{! $Resource.JQueryCommunity }"></script>
+  <script type='text/javascript'>
+  
+      $('.toolbarWA').mousedown(function(event) {
+        if($(this).attr('override')!='true'){
+          debugger;
+            event.preventDefault();
+            switch (event.which) {
+                case 1:
+                  $(this).attr('target','_self');
+                 window.location='/apex/CommunityAngularPage'+$(this).attr('name');
+                    break;
+                case 2:
+                    $(this).attr('href','/partner'+$(this).attr('name'));
+                    $(this).attr('target','_blank');
+                    break;
+                case 3:
+                    $(this).attr('href','/partner'+$(this).attr('name'));
+                    $(this).attr('target','_blank');
+                    break;
+                default:
+                    //alert('You have a strange mouse');
+            }
+            return false;
+        }
+      });
+      
+  
+  </script>
+  </html>
+  
