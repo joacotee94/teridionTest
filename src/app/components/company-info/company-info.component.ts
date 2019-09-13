@@ -44,6 +44,12 @@ export class CompanyInfoComponent implements OnInit {
       teritories__c: new FormControl(partner.teritories__c, [Validators.required]),
       totalHeadCount__c: new FormControl(partner.totalHeadCount__c, [Validators.required]),
       totalRevenue__c: new FormControl(partner.totalRevenue__c,[] ),
+      Legal_Billing_Entity__c: new FormControl(partner.Legal_Billing_Entity__c, []),
+      Full_Address__c: new FormControl(partner.Full_Address__c,[]),
+      Tax_ID__c: new FormControl(partner.Tax_ID__c,[]),
+      Billing_Email_Address__c: new FormControl(partner.Billing_Email_Address__c,[]),
+      Banking_Info__c: new FormControl(partner.Banking_Info__c,[]),
+      Sales_Tax_Exempt__c: new FormControl(partner.Sales_Tax_Exempt__c,[])
     })
   }
 
@@ -101,5 +107,22 @@ export class CompanyInfoComponent implements OnInit {
   get totalRevenue__c() {
     return this.partner.get('totalRevenue__c');
   }
-  
+  get Full_Address__c() {
+    return this.partner.get('Full_Address__c');
+  }
+  get Billing_Email_Address__c() {
+    return this.partner.get('Billing_Email_Address__c');
+  }
+  get Legal_Billing_Entity__c() {
+    return this.partner.get('Legal_Billing_Entity__c');
+  }
+  get Banking_Info__c() {
+    return this.partner.get('Banking_Info__c');
+  }
+  get Tax_ID__c () {
+    return this.partner.get('Tax_ID__c');
+  }
+  get Sales_Tax_Exempt__c() {
+    return this.partner.get('Sales_Tax_Exempt__c');
+  }
 }

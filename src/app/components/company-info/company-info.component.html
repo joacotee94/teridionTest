@@ -20,6 +20,12 @@
       <mat-error *ngIf="BillingStreet.invalid">Required</mat-error>
 
     </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Full Address" formControlName="Full_Address__c">
+  </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Billing Email Address" formControlName="Billing_Email_Address__c">
+  </mat-form-field>
     <mat-form-field>  
       <input matInput placeholder="Number of Locations" formControlName="numberOflocations__c">
       <mat-error *ngIf="numberOflocations__c.invalid">Required</mat-error>
@@ -31,14 +37,30 @@
 
     </mat-form-field>
     <mat-form-field>
+      <input matInput placeholder="Territories Covered" formControlName="teritories__c">
+      <mat-error *ngIf="teritories__c.invalid">Required</mat-error>
+
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder=" Legal Billing Entity" formControlName="Legal_Billing_Entity__c">
+    </mat-form-field>
+    <mat-form-field>
         <input matInput placeholder="Total Revenue" formControlName="totalRevenue__c">
-      <mat-error *ngIf="totalRevenue__c.invalid">Required</mat-error>
+        <mat-error *ngIf="totalRevenue__c.invalid">Required</mat-error>
 
     </mat-form-field>
     <mat-form-field>
         <input matInput placeholder="Networking Revenue" formControlName="networkingRevenue__c">
-      <mat-error *ngIf="networkingRevenue__c.invalid">Required</mat-error>
-
+        <mat-error *ngIf="networkingRevenue__c.invalid">Required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Banking Info" formControlName="Banking_Info__c">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Tax ID" formControlName="Tax_ID__c">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Sales Tax Exempt/ Reseller Certificate for Tax purposes" formControlName="Sales_Tax_Exempt__c">
     </mat-form-field>
     <mat-form-field>
         <input matInput placeholder="Overall Headcount" formControlName="overAllHeadCount__c">

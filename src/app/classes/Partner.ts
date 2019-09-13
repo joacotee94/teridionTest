@@ -13,7 +13,12 @@ export class Partner {
     public teritories__c:string;
     public totalHeadCount__c:string;
     public totalRevenue__c:string;
-
+    public Legal_Billing_Entity__c:string; 
+    public Full_Address__c:string; //Added
+    public Tax_ID__c:string;//Added
+    public Billing_Email_Address__c:string; //Added
+    public Banking_Info__c:string;//Addded
+    public Sales_Tax_Exempt__c:string;//Added
     constructor(){
         
     }
