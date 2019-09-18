@@ -14,11 +14,17 @@ export class Partner {
     public totalHeadCount__c:string;
     public totalRevenue__c:string;
     public Legal_Billing_Entity__c:string; 
-    public Full_Address__c:string; //Added
     public Tax_ID__c:string;//Added
     public Billing_Email_Address__c:string; //Added
-    public Banking_Info__c:string;//Addded
     public Sales_Tax_Exempt__c:string;//Added
+    public Bank_Name__c:string;
+    public Bank_Address__c:string;
+    public Account_Name__c:string;
+    public Account_Number__c:string;
+    public Routing_Number_ACH__c:string;
+    public SWIFT__c:string;
+    public IBAN__c:string;
+
     constructor(){
         
     }

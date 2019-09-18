@@ -86,6 +86,13 @@ export class RemoteActionsService {
         this.callRemote('CommunityFachadeController.uploadFile',[docName,attachmentBody,attName,attDesctiption,docType,filetype],resolve,reject)
       })
     }
+
+    uploadResellerCertificate(body,contentType) {
+      return new Promise((resolve,reject)=>{
+        this.callRemote('CommunityFachadeController.uploadResellerCertificate',[body,contentType],resolve,reject)
+      })
+
+    }
     getUserName() {
       return new Promise((resolve,reject)=>{
         this.callRemote('CommunityFachadeController.getUserName',[],resolve,reject)
